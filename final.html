@@ -135,5 +135,48 @@ img{
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+function launchConfetti(){
+
+    const duration = 4000; // länger
+    const end = Date.now() + duration;
+
+    const goldColors = [
+        "#d4af37",
+        "#ffd700",
+        "#ffec8b",
+        "#caa300"
+    ];
+
+    (function frame(){
+
+        confetti({
+            particleCount: 3,          // weniger = ruhiger
+            spread: 60,                // enger = eleganter
+            startVelocity: 20,        // langsamer
+            ticks: 200,               // längere Lebensdauer
+            gravity: 0.6,             // etwas langsameres Fallen
+            colors: goldColors,
+            origin: {
+                x: Math.random(),
+                y: 0
+            }
+        });
+
+        if(Date.now() < end){
+            requestAnimationFrame(frame);
+        }
+
+    })();
+
+}
+
+// Start beim Laden
+window.onload = launchConfetti;
+</script>
+
+
 </body>
 </html>
