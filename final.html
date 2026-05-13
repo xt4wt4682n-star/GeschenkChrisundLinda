@@ -105,6 +105,48 @@ img{
     display:block;
 }
 
+/* Karte */
+.map-vintage{
+    position:relative;
+    margin-top:20px;
+    border:2px solid #d4af37;
+    border-radius:12px;
+    overflow:hidden;
+
+    /* Vintage Effekt */
+    filter:sepia(0.4) contrast(1.1) brightness(0.95);
+}
+
+.map-vintage img{
+    width:100%;
+    display:block;
+}
+
+/* Pin */
+.pin{
+    width:14px;
+    height:14px;
+    background:#d4af37;
+    border-radius:50%;
+    position:absolute;
+    top:45%;
+    left:55%;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 10px rgba(212,175,55,0.8);
+}
+
+/* Label */
+.label{
+    position:absolute;
+    top:calc(45% - 25px);
+    left:55%;
+    transform:translateX(-50%);
+    color:#d4af37;
+    font-weight:bold;
+    font-size:14px;
+    text-shadow:0 0 5px black;
+}
+
 /* Mobile */
 @media (max-width:480px){
     body{ padding:15px; }
