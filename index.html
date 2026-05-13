@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zugangssystem</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#050505;
+    color:#00ff99;
+    font-family:monospace;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.box{
+    width:340px;
+    border:1px solid #00ff99;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 25px #00ff99;
+    background:#0a0a0a;
+}
+
+h1{
+    margin-top:0;
+    font-size:22px;
+}
+
+input{
+    width:80%;
+    padding:12px;
+    margin-top:20px;
+    background:black;
+    border:1px solid #00ff99;
+    color:#00ff99;
+    font-size:20px;
+    text-align:center;
+}
+
+button{
+    margin-top:15px;
+    padding:10px 20px;
+    background:#00ff99;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#message{
+    margin-top:15px;
+    color:#ff4444;
+}
+
+#content{
+    display:none;
+    margin-top:20px;
+}
+
+.fade{
+    animation:fadein 1s;
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <div id="login">
+
+        <h1>ZUGANG GESPERRT</h1>
+
+        <p>
+        Vier Zahlen öffnen das Tor.<br>
+        Zwei davon verstecken sich im Licht.
+        </p>
+
+        <input
+            type="password"
+            id="code"
+            placeholder="CODE">
+
+        <br>
+
+        <button onclick="unlock()">
+            ENTSPERREN
+        </button>
+
+        <div id="message"></div>
+
+    </div>
+
+    <div id="content" class="fade"></div>
+
+</div>
+
+<script>
+
+async function unlock(){
+
+    const code =
+        document.getElementById("code").value;
+
+    const message =
+        document.getElementById("message");
+
+    // Richtiger Code
+    if(code === "4281"){
+
+        message.innerHTML = "";
+
+        // Externe geheime Datei laden
+        const response =
+            await fetch("secret.html");
+
+        const secretText =
+            await response.text();
+
+        document.getElementById("login")
+            .style.display = "none";
+
+        const content =
+            document.getElementById("content");
+
+        content.innerHTML = secretText;
+        content.style.display = "block";
+
+    }else{
+
+        message.innerHTML =
+            "Falscher Code";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
