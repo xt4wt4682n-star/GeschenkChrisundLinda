@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Herzlichen Glückwunsch</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#0f0f0f;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+}
+
+/* REVEAL */
+.container{
+    width:100%;
+    max-width:700px;
+    text-align:center;
+
+    opacity:0;
+    transform:translateY(30px) scale(0.98);
+
+    animation:reveal 1.8s ease-out forwards;
+}
+
+@keyframes reveal{
+    0%{
+        opacity:0;
+        transform:translateY(30px) scale(0.98);
+        filter:blur(8px);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+        filter:blur(0);
+    }
+}
+
+/* Titel */
+h1{
+    color:gold;
+    font-size:clamp(22px, 5vw, 34px);
+    margin-bottom:25px;
+    line-height:1.3;
+
+    animation:glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 5px rgba(255,215,0,0.3); }
+    to{ text-shadow:0 0 20px rgba(255,215,0,0.8); }
+}
+
+/* Text */
+p{
+    font-size:clamp(16px, 4vw, 20px);
+    line-height:1.8;
+    margin:15px 0;
+}
+
+/* Sections */
+.section{
+    margin-bottom:35px;
+}
+
+/* Bilder */
+img{
+    width:100%;
+    height:auto;
+    border:2px solid gold;
+    border-radius:10px;
+    margin-top:15px;
+    display:block;
+}
+
+/* Mobile */
+@media (max-width:480px){
+    body{ padding:15px; }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Herzlichen Glückwunsch und alles Gute zur Hochzeit!</h1>
+
+    <div class="section">
+
+        <img src="bild1.jpg" alt="Hochzeitsbild">
+
+    </div>
+
+    <div class="section">
+
+        <p>
+        Wir möchten mit euch gerne eine Wochenendtrip nach Zandvoort in den Niederlanden machen!
+        </p>
+
+        <img src="zandvoort-map.jpg" alt="Zandvoort Karte">
+
+    </div>
+
+    <div class="section">
+
+        <p>
+        Unterkunft geht auf uns, wir müssen uns nur noch auf einen Termin einigen.
+        </p>
+
+        <p>
+        Wir freuen uns auf die Tage mit euch!
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -6,8 +6,6 @@
 
 <title>Zugang gesperrt</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
-
 <style>
 
 *{
@@ -17,190 +15,63 @@
 }
 
 body{
-    background:
-        radial-gradient(circle at center, #2b2b2b 0%, #111111 70%);
-    overflow:hidden;
+    background:#111;
+    color:#fff;
+    font-family:Arial, sans-serif;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:'Cinzel', serif;
-    color:#ffffff;
+    padding:20px;
 }
-
-/* Hintergrundstruktur */
-
-body::before{
-    content:"";
-    position:absolute;
-    width:200%;
-    height:200%;
-    background:
-    repeating-linear-gradient(
-        0deg,
-        rgba(255,215,120,0.03),
-        rgba(255,215,120,0.03) 1px,
-        transparent 1px,
-        transparent 5px
-    );
-    animation:moveGrid 12s linear infinite;
-}
-
-@keyframes moveGrid{
-    from{
-        transform:translateY(0);
-    }
-    to{
-        transform:translateY(50px);
-    }
-}
-
-/* Hauptbox */
 
 .panel{
-    position:relative;
-    z-index:10;
-    width:430px;
-    background:rgba(255,255,255,0.04);
-    border:2px solid #d4af37;
-    padding:45px;
-    box-shadow:
-        0 0 15px rgba(212,175,55,0.4),
-        0 0 40px rgba(212,175,55,0.15);
-    backdrop-filter:blur(8px);
-}
-
-/* Titel */
-
-.title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.title h1{
-    font-size:32px;
-    letter-spacing:3px;
-    color:#ffffff;
-    text-shadow:0 0 10px rgba(255,255,255,0.5);
-}
-
-.subtitle{
-    margin-top:10px;
-    font-size:13px;
-    color:#f0d98a;
-    letter-spacing:2px;
-}
-
-/* Text */
-
-.riddle{
-    font-size:16px;
-    line-height:2;
-    margin-bottom:35px;
-    color:#f8f8f8;
+    width:100%;
+    max-width:420px;
+    border:2px solid gold;
+    padding:40px;
     text-align:center;
 }
 
-/* Input */
+h1{
+    color:gold;
+    margin-bottom:20px;
+    font-size:26px;
+}
+
+p{
+    line-height:1.8;
+    margin-bottom:25px;
+}
 
 input{
     width:100%;
     padding:15px;
-    background:#111;
-    border:1px solid #d4af37;
-    color:#ffffff;
-    font-size:22px;
+    font-size:20px;
     text-align:center;
-    outline:none;
-    transition:0.3s;
-    letter-spacing:6px;
-    font-family:'Cinzel', serif;
+    border:1px solid gold;
+    background:#000;
+    color:#fff;
 }
-
-input:focus{
-    box-shadow:0 0 15px rgba(212,175,55,0.7);
-}
-
-/* Button */
 
 button{
+    margin-top:15px;
     width:100%;
-    margin-top:20px;
     padding:15px;
+    border:1px solid gold;
     background:transparent;
-    border:1px solid #d4af37;
-    color:#f0d98a;
+    color:gold;
     cursor:pointer;
-    font-size:15px;
-    letter-spacing:2px;
-    transition:0.3s;
-    font-family:'Cinzel', serif;
 }
 
 button:hover{
-    background:#d4af37;
+    background:gold;
     color:black;
-    box-shadow:0 0 20px rgba(212,175,55,0.6);
 }
-
-/* Fehlermeldung */
 
 #error{
-    margin-top:18px;
-    color:#ff7777;
-    text-align:center;
-    min-height:20px;
-    letter-spacing:1px;
-}
-
-/* Geheime Seite */
-
-#secret{
-    display:none;
-    animation:fadeIn 2s;
-    text-align:center;
-}
-
-#secret h2{
-    margin-bottom:20px;
-    color:#ffffff;
-    text-shadow:0 0 10px rgba(255,255,255,0.5);
-}
-
-#secret p{
-    line-height:1.8;
-    color:#f8f8f8;
-}
-
-@keyframes fadeIn{
-    from{
-        opacity:0;
-        transform:translateY(20px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* Goldpartikel */
-
-.particle{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:#d4af37;
-    opacity:0.4;
-    animation:float 12s linear infinite;
-}
-
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-    }
-    to{
-        transform:translateY(-100vh);
-    }
+    margin-top:15px;
+    color:#ff6666;
 }
 
 </style>
@@ -208,103 +79,42 @@ button:hover{
 
 <body>
 
-<script>
-for(let i=0;i<50;i++){
-
-    let p=document.createElement("div");
-    p.classList.add("particle");
-
-    p.style.left=Math.random()*100+"vw";
-    p.style.animationDuration=
-        (6+Math.random()*10)+"s";
-
-    p.style.opacity=Math.random();
-
-    document.body.appendChild(p);
-}
-</script>
-
 <div class="panel">
 
-    <div id="login">
+    <h1>ZUGANG GESPERRT</h1>
 
-        <div class="title">
-            <h1>ZUGANG GESPERRT</h1>
+    <p>
+    Vier Zahlen gewähren euch Zugang.<br><br>
 
-            <div class="subtitle">
-                AUTHORIZATION REQUIRED
-            </div>
-        </div>
+    Die Zahlen findet ihr im Buch,<br>
+    jede Zahl steht für die Anzahl der gefundenen Symbole in den Bildern.<br><br>
 
-        <div class="riddle">
+    Die Reihenfolge der Zahlen findet ihr ebenfalls im Buch.
+    </p>
 
-            Vier Zahlen gewähren euch Zugang.<br><br>
+    <input type="password" id="code" placeholder="CODE">
 
-            Die Zahlen findet ihr im Buch,<br>
-            jede Zahl steht für die Anzahl<br>
-            der gefundenen Symbole in den Bildern.<br><br>
+    <button onclick="unlock()">PRÜFEN</button>
 
-            Die Reihenfolge der Zahlen<br>
-            findet ihr ebenfalls im Buch.
-
-        </div>
-
-        <input
-            type="password"
-            id="code"
-            placeholder="••••">
-
-        <button onclick="unlock()">
-            ZUGANG PRÜFEN
-        </button>
-
-        <div id="error"></div>
-
-    </div>
-
-    <div id="secret">
-
-        <h2>ZUGANG GEWÄHRT</h2>
-
-        <p>
-        Ihr habt das Rätsel gelöst.
-        </p>
-
-    </div>
+    <div id="error"></div>
 
 </div>
 
 <script>
-
 function unlock(){
 
     const correctCode = "4281";
 
-    const input =
-        document.getElementById("code").value;
-
-    const error =
-        document.getElementById("error");
+    const input = document.getElementById("code").value;
+    const error = document.getElementById("error");
 
     if(input === correctCode){
-
-        document.getElementById("login")
-            .style.display = "none";
-
-        document.getElementById("secret")
-            .style.display = "block";
-
-    }else{
-
-        error.innerHTML =
-            "FALSCHER CODE";
-
+        window.location.href = "secret.html";
+    } else {
+        error.innerHTML = "FALSCHER CODE";
         navigator.vibrate?.(100);
-
     }
-
 }
-
 </script>
 
 </body>
