@@ -17,7 +17,7 @@
 body{
     background:#111;
     color:#fff;
-    font-family:Arial, sans-serif;
+    font-family:Montserrat, sans-serif;
     height:100vh;
     display:flex;
     justify-content:center;
@@ -28,13 +28,13 @@ body{
 .panel{
     width:100%;
     max-width:420px;
-    border:2px solid gold;
+    border:2px solid #7da291;
     padding:40px;
     text-align:center;
 }
 
 h1{
-    color:gold;
+    color:#7da291;
     margin-bottom:20px;
     font-size:26px;
 }
@@ -49,7 +49,7 @@ input{
     padding:15px;
     font-size:20px;
     text-align:center;
-    border:1px solid gold;
+    border:1px solid #7da291;
     background:#000;
     color:#fff;
 }
@@ -58,15 +58,15 @@ button{
     margin-top:15px;
     width:100%;
     padding:15px;
-    border:1px solid gold;
+    border:1px solid #7da291;
     background:transparent;
-    color:gold;
+    color:#f0ece7;
     cursor:pointer;
 }
 
 button:hover{
-    background:gold;
-    color:black;
+    background:#77da291;
+    color:#f0ece7;
 }
 
 #error{
@@ -84,15 +84,20 @@ button:hover{
     <h1>ZUGANG GESPERRT</h1>
 
     <p>
-    Vier Zahlen gewähren euch Zugang.<br><br>
+    Fünf Buchstaben gewähren euch Zugang.<br><br>
 
-    Die Zahlen findet ihr im Buch,<br>
-    jede Zahl steht für die Anzahl der gefundenen Symbole in den Bildern.<br><br>
-
-    Die Reihenfolge der Zahlen findet ihr ebenfalls im Buch.
+    Für die Lösung müsst ihr Fragen beantworten,<br>
+    die Fragen findet ihr auf der Karte im Geschenk.<br><br>
+        
     </p>
 
-    <input type="password" id="code" placeholder="CODE">
+    <input 
+        type="text" 
+        id="code" 
+        placeholder="ABCDE"
+        maxlength="5"
+        autocomplete="off"
+        autocapitalize="characters">
 
     <button onclick="unlock()">PRÜFEN</button>
 
@@ -103,9 +108,14 @@ button:hover{
 <script>
 function unlock(){
 
-    const correctCode = "4281";
+    const correctCode = "ABCDE";
 
-    const input = document.getElementById("code").value;
+    const input = document
+        .getElementById("code")
+        .value
+        .value
+        .toUpperCase()
+        .trim();
     const error = document.getElementById("error");
 
     if(input === correctCode){
