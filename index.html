@@ -6,6 +6,8 @@
 
 <title>Zugang gesperrt</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
 
 *{
@@ -15,63 +17,156 @@
 }
 
 body{
-    background:#111;
-    color:#fff;
-    font-family:Montserrat, sans-serif;
-    height:100vh;
+    background:#f8f5ed;
+    color:#333333;
+    font-family:'Montserrat', sans-serif;
+
+    min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     padding:20px;
 }
 
 .panel{
     width:100%;
-    max-width:420px;
+    max-width:500px;
+
+    background:#ffffff;
+
     border:2px solid #7da291;
-    padding:40px;
+
+    padding:45px 35px;
+
     text-align:center;
+
+    box-shadow:0 10px 35px rgba(125,162,145,0.20);
+
+    border-radius:4px;
 }
 
 h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+
     color:#7da291;
-    margin-bottom:20px;
-    font-size:26px;
+
+    font-size:clamp(34px, 9vw, 52px);
+
+    line-height:1.1;
+
+    margin-bottom:30px;
 }
 
-p{
+.riddle{
+    font-size:clamp(15px, 4vw, 18px);
+
     line-height:1.8;
-    margin-bottom:25px;
+
+    color:#333333;
+
+    margin-bottom:30px;
 }
 
 input{
     width:100%;
+
     padding:15px;
-    font-size:20px;
-    text-align:center;
+
+    background:#f8f5ed;
+
     border:1px solid #7da291;
-    background:#000;
-    color:#fff;
+
+    color:#333333;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-size:22px;
+
+    font-weight:500;
+
+    text-align:center;
+
+    letter-spacing:7px;
+
+    outline:none;
+
+    border-radius:3px;
+
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#7da291;
+
+    box-shadow:0 0 0 3px rgba(125,162,145,0.15);
 }
 
 button{
-    margin-top:15px;
     width:100%;
+
+    margin-top:18px;
+
     padding:15px;
-    border:1px solid #7da291;
-    background:transparent;
-    color:#f0ece7;
+
+    background:#7da291;
+
+    border:2px solid #7da291;
+
+    color:#ffffff;
+
     cursor:pointer;
+
+    font-family:'Montserrat', sans-serif;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    border-radius:3px;
+
+    transition:0.3s;
 }
 
 button:hover{
-    background:#77da291;
-    color:#f0ece7;
+    background:#6f9382;
+    border-color:#6f9382;
+}
+
+button:active{
+    transform:scale(0.98);
 }
 
 #error{
-    margin-top:15px;
-    color:#ff6666;
+    margin-top:18px;
+
+    min-height:22px;
+
+    color:#b85c5c;
+
+    font-size:14px;
+
+    font-weight:500;
+}
+
+@media (max-width:480px){
+
+    body{
+        padding:15px;
+    }
+
+    .panel{
+        padding:35px 22px;
+    }
+
+    .riddle{
+        font-size:15px;
+    }
+
 }
 
 </style>
@@ -81,50 +176,90 @@ button:hover{
 
 <div class="panel">
 
-    <h1>ZUGANG GESPERRT</h1>
+    <h1>Zugang gesperrt</h1>
 
-    <p>
-    Fünf Buchstaben gewähren euch Zugang.<br><br>
+    <div class="riddle">
 
-    Für die Lösung müsst ihr Fragen beantworten,<br>
-    die Fragen findet ihr auf der Karte im Geschenk.<br><br>
-        
-    </p>
+        Fünf Zahlen gewähren euch Zugang.<br><br>
 
-    <input 
-        type="text" 
-        id="code" 
-        placeholder="ABCDE"
+        Die Zahlen findet ihr,<br>
+        wenn ihr die Fragen auf der Karte beantwortet.<br>
+
+        in der richtigen Reihenfolgen eingegeben<br>
+        lösen sie das Rätsel.
+
+    </div>
+
+    <input
+        type="text"
+        id="code"
+        placeholder="•••••"
         maxlength="5"
-        autocomplete="off"
-        autocapitalize="characters">
+        inputmode="numeric"
+        pattern="[0-9]*"
+        autocomplete="off">
 
-    <button onclick="unlock()">PRÜFEN</button>
+    <button onclick="unlock()">
+        PRÜFEN
+    </button>
 
     <div id="error"></div>
 
 </div>
 
 <script>
+
+/* ==========================================
+   HIER DEINEN FÜNFSTELLIGEN CODE EINTRAGEN
+   ========================================== */
+
+const correctCode = "42817";
+
+
+/* ==========================================
+   CODE PRÜFEN
+   ========================================== */
+
 function unlock(){
 
-    const correctCode = "ABCDE";
-
-    const input = document
-        .getElementById("code")
-        .value
-        .value
-        .toUpperCase()
-        .trim();
+    const inputField = document.getElementById("code");
     const error = document.getElementById("error");
 
-    if(input === correctCode){
+    const enteredCode = inputField.value.trim();
+
+    if(enteredCode === correctCode){
+
+        /* Richtiger Code */
+
         window.location.href = "secret.html";
-    } else {
-        error.innerHTML = "FALSCHER CODE";
-        navigator.vibrate?.(100);
+
+    }else{
+
+        /* Falscher Code */
+
+        error.textContent = "FALSCHER CODE";
+
+        inputField.value = "";
+
+        inputField.focus();
+
     }
 }
+
+
+/* ENTER-TASTE */
+
+document.getElementById("code").addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+            unlock();
+        }
+
+    }
+);
+
 </script>
 
 </body>
